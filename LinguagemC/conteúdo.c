@@ -162,3 +162,21 @@ float calcular(float numero_raiz, float numero_soma) {
     float resultado = soma / 2.0;
     return resultado;
 }
+
+///Cálculo da área
+
+#include <stdio.h>
+#define pi 3.1416
+ int main(){
+     ///A = pi(3,1416...) * raiz quadrada(x / 2)
+     float r, a;
+     scanf("%f", &r);
+     a = pi * (r * r);
+     printf("%.2f", a);
+     
+     
+     return 0;
+ }
+
+
+
