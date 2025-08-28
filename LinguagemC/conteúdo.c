@@ -201,6 +201,38 @@ return 0;
 
 }
 
+///Tabuada utilizando o DEFINE
+
+#include <stdio.h>
+#define LIMITE 10
+
+#include <stdio.h>
+#define LIMITE 10
+
+int main() {
+    int i;
+    int limite;
+
+    printf("Escolha um número e veja sua tabuada: ");
+    scanf("%d", &i);
+
+    limite = 0;
+    while (limite <= LIMITE) {
+        printf("%d x %d = %d\n", i, limite, i * limite);
+        limite++;
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
 
 
 
