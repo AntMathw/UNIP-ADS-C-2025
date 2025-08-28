@@ -178,5 +178,32 @@ float calcular(float numero_raiz, float numero_soma) {
      return 0;
  }
 
+///Tabuada utilizando estrutura While
+
+#include <stdio.h>
+
+
+int main(){
+    int cont = 0;
+    int limite;
+    printf("Escolha um número e veja sua tabuada: ");
+    scanf("%i", &cont);
+    
+    while (cont <= 10){
+        limite = 0;
+        while (limite <= 10){
+            printf("%d x %d = %d\n", cont, limite, cont * limite);
+            limite ++;
+        }
+return 0;
+    }
+    
+
+}
+
+
+
+
+
 
 
