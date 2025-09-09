@@ -258,6 +258,31 @@ int main() {
     return 0;
 }
 
+#include <stdio.h>
+#include <string.h>
+
+
+
+int main(){
+
+    char nome1[51];
+    char nome2[51];
+    
+    printf("Digite o seu nome: ");
+    scanf("%50s", &nome1);
+    printf("Nome: %s\n", nome1);
+    getchar();
+    
+    printf("Digite o segundo nome: ");
+    fgets(nome2, sizeof(nome2), stdin);
+    nome2[strcspn(nome2,"\n")] = '\0';
+    printf("Nome: %s\n", nome2);
+    
+    
+    
+    
+    return 0;
+}
 
 
 
