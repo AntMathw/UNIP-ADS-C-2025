@@ -258,6 +258,7 @@ int main() {
     return 0;
 }
 
+//Formulário
 #include <stdio.h>
 #include <string.h>
 
@@ -281,6 +282,53 @@ int main(){
     
     
     
+    return 0;
+}
+
+
+//Outra maneira de fazer um Formulário
+
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+
+    char nome1[51];
+    char sobrenome[51];
+    char datanascimento[11];  
+    char email[100];
+    char celular[12];
+
+    printf("FORMULÁRIO\n\n");
+
+    printf("Digite o seu nome: \n");
+    scanf("%50s", nome1);   
+    printf("Nome: %s\n", nome1);
+    getchar();
+
+    printf("Digite o sobrenome: ");
+    fgets(sobrenome, sizeof(sobrenome), stdin);
+    sobrenome[strcspn(sobrenome, "\n")] = '\0';
+    printf("Sobrenome: %s\n", sobrenome);
+
+    printf("Digite sua data de nascimento DD/MM/AAAA: ");
+    fgets(datanascimento, sizeof(datanascimento), stdin);  
+    datanascimento[strcspn(datanascimento, "\n")] = '\0';
+    printf("Nascimento: %s\n", datanascimento);
+    getchar();
+
+    printf("Digite seu e-mail: ");
+    fgets(email, sizeof(email), stdin);  
+    email[strcspn(email, "\n")] = '\0';
+    printf("E-mail: %s\n", email);
+    getchar();
+
+    printf("Digite seu número de celular (+55): ");
+    fgets(celular, sizeof(celular), stdin);  
+    celular[strcspn(celular, "\n")] = '\0';
+    printf("Celular: %s\n", celular);  
+    getchar();
+
     return 0;
 }
 
