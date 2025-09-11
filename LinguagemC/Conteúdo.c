@@ -333,7 +333,28 @@ int main() {
 }
 
 
+#include <stdio.h>
+#include <string.h>
 
+int main() {
+    // Declara e inicializa uma string.
+    // O compilador adiciona o '\0' automaticamente.
+    char saudacao[] = "Olá, mundo!";
+
+    // Declara um array de caracteres e copia uma string para ele.
+    char nome[20];
+    strcpy(nome, "Maria");
+
+    // Imprime as strings.
+    printf("Saudação: %s\n", saudacao);
+    printf("Nome: %s\n", nome);
+
+    // Calcula o comprimento da string (não conta o '\0').
+    int tamanho = strlen(saudacao);
+    printf("O tamanho da saudação é: %d\n", tamanho);
+
+    return 0;
+}
 
 
 
