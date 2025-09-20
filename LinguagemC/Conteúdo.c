@@ -356,6 +356,37 @@ int main() {
     return 0;
 }
 
+#include <stdio.h>
+
+int main() {
+    float numero1, numero2, resultado_divisao, resultado_multiplicacao;
+
+    // Solicita os dois números ao usuário
+    printf("Digite o primeiro numero: ");
+    scanf("%f", &numero1);
+
+    printf("Digite o segundo numero: ");
+    scanf("%f", &numero2);
+
+    // Verifica se o segundo número é zero para evitar divisão por zero
+    if (numero2 == 0) {
+        printf("Erro: Nao e possivel dividir por zero.\n");
+        return 1; // Retorna um código de erro
+    }
+
+    // Realiza a divisão
+    resultado_divisao = numero1 / numero2;
+
+    // Realiza a multiplicação do resultado da divisão por outro número (neste exemplo, 2)
+    // Você pode substituir o 2 por qualquer outro número que desejar.
+    resultado_multiplicacao = resultado_divisao * 2;
+
+    // Exibe os resultados
+    printf("O resultado da divisao e: %.2f\n", resultado_divisao);
+    printf("O resultado da multiplicacao (do resultado da divisao por 2) e: %.2f\n", resultado_multiplicacao);
+
+    return 0; // Indica que o programa foi executado com sucesso
+}
 
 
 
