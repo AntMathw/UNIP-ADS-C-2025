@@ -32,3 +32,56 @@ int main() {
 
     return 0;
 }
+
+
+
+#include <stdio.h>
+
+int main() {
+    char operador;
+    double num1, num2, resultado;
+
+    // Solicita a entrada da operação e dos números
+    printf("Digite um operador (+, -, *, /): ");
+    scanf(" %c", &operador); // O espaço antes de %c ajuda a consumir qualquer caractere de nova linha pendente
+    
+    printf("Digite o primeiro número: ");
+    scanf("%lf", &num1);
+    
+    printf("Digite o segundo número: ");
+    scanf("%lf", &num2);
+
+    // Estrutura switch para escolher a operação
+    switch (operador) {
+        case '+':
+            resultado = num1 + num2;
+            printf("%.2lf + %.2lf = %.2lf\n", num1, num2, resultado);
+            break; // Sai do switch após a execução
+            
+        case '-':
+            resultado = num1 - num2;
+            printf("%.2lf - %.2lf = %.2lf\n", num1, num2, resultado);
+            break;
+            
+        case '*':
+            resultado = num1 * num2;
+            printf("%.2lf * %.2lf = %.2lf\n", num1, num2, resultado);
+            break;
+            
+        case '/':
+            // Verifica se o segundo número é zero antes de dividir
+            if (num2 != 0) {
+                resultado = num1 / num2;
+                printf("%.2lf / %.2lf = %.2lf\n", num1, num2, resultado);
+            } else {
+                printf("Erro! Divisão por zero não é permitida.\n");
+            }
+            break;
+            
+        // O 'default' é executado se nenhum dos 'case' corresponder
+        default:
+            printf("Erro! Operador inválido.\n");
+    }
+
+    return 0;
+}
