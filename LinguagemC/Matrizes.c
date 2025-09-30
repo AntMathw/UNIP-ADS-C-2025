@@ -17,7 +17,7 @@ int main(){
     return 0;
 }
 
-///Cálculo das Matrizes 3x3 A e B
+///EXERCÍCIO1 = Cálculo das Matrizes 3x3 A e B
 
 #include <stdio.h>
 
