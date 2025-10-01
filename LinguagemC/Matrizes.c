@@ -73,3 +73,65 @@ int main(){
     
     return 0;
 }
+
+///Exercício Matriz Identidade
+
+#include <stdio.h>
+#include <stdbool.h>
+
+
+#define T 3 
+
+int main() {
+    
+    int matriz[T][T];
+    bool m_identidade = true;
+    
+    for(int i = 0; i < T; i ++) {
+        for(int j = 0; j < T; j ++) {
+            printf("Digite valores A[%d][%d]: ", i, j);
+            if(scanf("%d", &matriz[i][j]) != 1) {
+                printf("Erro de leitura. Fim do programa. \n");
+                return 1;
+            }
+        }
+    }
+    
+    printf("\n");
+    
+
+    for(int i = 0; i < T; i ++) {
+        for(int j = 0; j < T; j ++) {
+            
+            if (i == j) {
+                if (matriz[i][j] != 1){
+                    m_identidade = false;
+                }
+            }
+            else { 
+                if (matriz[i][j] != 0){
+                    m_identidade = false;
+                }
+            }
+            
+
+            if (!m_identidade) { 
+                break; 
+            }
+        }
+        
+
+        if (!m_identidade) {
+            break;
+        }
+    }
+    
+
+    if (m_identidade){
+        printf("A matriz É MATRIZ IDENTIDADE. \n");
+    } else {
+        printf("A matriz NÃO é MATRIZ IDENTIDADE. \n");
+    }
+    
+    return 0;
+}
