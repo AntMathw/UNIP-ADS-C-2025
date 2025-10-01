@@ -135,3 +135,60 @@ int main() {
     
     return 0;
 }
+
+
+///Matriz em escala 2x2
+#include <stdio.h>
+
+#define l 2
+#define c 2
+
+int main(){
+    
+    
+    
+    int matriz_a[l][c];
+    int matriz_b[l][c];
+    int resultado[l][c];
+    
+    
+    for(int i = 0; i < l; i ++){
+        for(int j = 0; j < c; j ++){
+            printf("Digite um valor A[%d][%d]: ", i, j);
+            scanf("%d", &matriz_a[i][j]);
+            
+        }
+    }
+    printf("\n");
+    
+    
+    for(int i = 0; i < l; i ++){
+        for(int j = 0; j < c; j ++){
+            printf("Digite outro valor B[%d][%d]: ", i, j);
+            scanf("%d", &matriz_b[i][j]);
+        }
+    }
+    printf("\n");
+    
+
+    
+    for(int i = 0; i < l; i ++){
+        for(int j = 0; j < c; j ++){
+            resultado[i][j] = matriz_a[i][j] + matriz_b[i][j];
+            
+        }
+    }
+    
+    
+    printf("------RESULTADO DA SOMA DAS MATRIZES------\n");
+    for(int i = 0; i < l; i ++){
+        for(int j = 0; j < c; j ++){
+            printf("%5d", resultado[i][j]);
+
+        }
+        
+        printf("\n");
+    }
+    
+    return 0;
+}
