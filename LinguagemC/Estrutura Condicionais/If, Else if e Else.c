@@ -27,3 +27,29 @@ int main() {
 
     return 0;
 }
+
+#include <stdio.h>
+
+int main() {
+    // Variáveis para armazenar o saldo e o valor da compra
+    float saldo_disponivel = 550.00;
+    float valor_da_compra = 499.99;
+
+    printf("--- Simulador de Compra ---\n");
+    printf("Saldo disponível: R$ %.2f\n", saldo_disponivel);
+    printf("Valor da compra:  R$ %.2f\n", valor_da_compra);
+    printf("---------------------------\n");
+
+    // A estrutura if/else verifica se o saldo é suficiente para a compra
+    if (saldo_disponivel >= valor_da_compra) {
+        // Bloco 'if': Executado se a condição for VERDADEIRA (saldo >= valor da compra)
+        printf("\nCOMPRA APROVADA!\n");
+        printf("Seu novo saldo será: R$ %.2f\n", saldo_disponivel - valor_da_compra);
+    } else {
+        // Bloco 'else': Executado se a condição for FALSA (saldo < valor da compra)
+        printf("\nCOMPRA RECUSADA!\n");
+        printf("Motivo: Saldo insuficiente. Faltam R$ %.2f para a compra.\n", valor_da_compra - saldo_disponivel);
+    }
+
+    return 0;
+}
