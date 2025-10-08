@@ -35,7 +35,7 @@ Se você usar o GCC diretamente, o comando básico é:
 # 📚 Tópicos Principais
 Estes são os tópicos essenciais da Linguagem C abordados na formação de ADS:
 
-+ 1. Fundamentos e Estrutura
+1. Fundamentos e Estrutura
 Estrutura básica: Funções main(), inclusão de bibliotecas (#include <stdio.h>), comentários.
 
 + Tipos de Dados: int, float, char, double.
@@ -46,21 +46,21 @@ Estrutura básica: Funções main(), inclusão de bibliotecas (#include <stdio.h
 
 + Operadores: Aritméticos, relacionais e lógicos.
 
-+ 2. Estruturas de Controle
+2. Estruturas de Controle
 + Estruturas de Decisão: if, else, else if e switch.
 
 + Estruturas de Repetição (Loops): for, while e do-while.
 
-+ 3. Estruturas de Dados Homogêneas
+3. Estruturas de Dados Homogêneas
 + Arrays (Vetores): Declaração, inicialização e acesso a elementos.
 
 + Matrizes: Manipulação de dados em duas ou mais dimensões.
 
 + Strings: Manipulação de cadeias de caracteres (arrays de char) e uso da biblioteca string.h.
 
-+ 4. Funções
+4. Funções
 + Modularização: Declaração, definição e chamada de funções.
 
-Passagem de Parâmetros: Passagem por valor e por referência.
++ Passagem de Parâmetros: Passagem por valor e por referência.
 
-Recursividade: Conceito e exemplos simples de funções recursivas.
++ Recursividade: Conceito e exemplos simples de funções recursivas.
