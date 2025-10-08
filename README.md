@@ -1,4 +1,3 @@
-# Contéudos Linguagem C - ADS UNIP
 
 # Linguagem C para UNIP - ADS
 Este repositório é dedicado ao aprendizado, exercícios e projetos desenvolvidos na Linguagem C durante o curso de Análise e             Desenvolvimento de Sistemas (ADS) da Universidade Paulista (UNIP).
