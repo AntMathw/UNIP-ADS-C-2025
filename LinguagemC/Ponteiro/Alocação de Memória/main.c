@@ -13,6 +13,7 @@ int main() {
     // Exemplo: preencher o vetor com valores de 1 a 10
     for (int i = 0; i < 10; i++) {
         p
+
 //SOMA DOS ELEMENTOS DE ALOCAÇÃO DE MEMÓRIA
 
 #include <stdio.h>
