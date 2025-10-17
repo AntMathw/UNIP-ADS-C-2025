@@ -48,3 +48,43 @@ int main(){
         
     
 }
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int *numeros;   // ponteiro para inteiros
+    int quantidade;
+    int i;
+
+    printf("Quantos numeros voce quer armazenar? ");
+    scanf("%d", &quantidade);
+
+    // Aloca memória para 'quantidade' inteiros
+    numeros = (int *) malloc(quantidade * sizeof(int));
+
+    // Verifica se a alocação foi bem-sucedida
+    if (numeros == NULL) {
+        printf("Erro: memoria nao pode ser alocada.\n");
+        return 1;
+    }
+
+    // Entrada dos valores
+    for (i = 0; i < quantidade; i++) {
+        printf("Digite o numero %d: ", i + 1);
+        scanf("%d", &numeros[i]);
+    }
+
+    // Exibe os valores armazenados
+    printf("\nNumeros armazenados:\n");
+    for (i = 0; i < quantidade; i++) {
+        printf("%d ", numeros[i]);
+    }
+    printf("\n");
+
+    // Libera a memória alocada
+    free(numeros);
+
+    return 0;
+}
+
