@@ -49,6 +49,8 @@ int main(){
     
 }
 
+//Armazenamento De Números na Memória
+
 #include <stdio.h>
 #include <stdlib.h>
 
