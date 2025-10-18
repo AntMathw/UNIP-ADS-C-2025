@@ -93,3 +93,46 @@ int main() {
     
     return 0;
 }
+
+//Estado de um ponteiro
+
+#include <stdio.h>
+
+int main() {
+    // 1. Declaração de uma variável inteira e sua inicialização
+    int valorOriginal = 42;
+
+    // 2. Declaração de um ponteiro para inteiro (int *)
+    // O asterisco (*) indica que 'ptr' é um ponteiro, e não uma variável comum.
+    int *ptr;
+
+    // 3. Atribuindo o endereço de memória da variável 'valorOriginal' ao ponteiro 'ptr'
+    // O operador '&' (e-comercial) é o operador "endereço de" (address-of).
+    ptr = &valorOriginal;
+
+    printf("--- Estado Inicial ---\n");
+    printf("Valor da variavel original (valorOriginal): %d\n", valorOriginal);
+    printf("Endereco de memoria de 'valorOriginal': %p\n", &valorOriginal);
+    printf("Conteudo do ponteiro 'ptr' (o endereco armazenado): %p\n", ptr);
+
+    // 4. Acessando o valor da variável através do ponteiro (Desreferenciação)
+    // O operador '*' (asterisco, neste contexto) é o operador "valor em" (dereference).
+    // Ele acessa o dado que está no endereço armazenado pelo ponteiro.
+    printf("\n--- Acesso via Ponteiro ---\n");
+    printf("Valor acessado via ponteiro (*ptr): %d\n", *ptr);
+
+    // 5. Modificando o valor da variável original usando o ponteiro
+    // Estamos dizendo: "Coloque o valor 99 no local apontado por 'ptr'".
+    *ptr = 99;
+
+    printf("\n--- Apos a Modificacao com Ponteiro (*ptr = 99) ---\n");
+    printf("Novo valor acessado via ponteiro (*ptr): %d\n", *ptr);
+    printf("Novo valor da variavel original (valorOriginal): %d\n", valorOriginal);
+
+    // Observacao: A modificacao via ponteiro alterou diretamente a variavel original.
+    if (valorOriginal == 99) {
+        printf("\nSucesso! O ponteiro modificou a variavel original diretamente.\n");
+    }
+
+    return 0;
+}
