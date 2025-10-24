@@ -53,3 +53,30 @@ int main() {
 
     return 0;
 }
+
+#IDADE de um adolescente
+
+#include <stdio.h>
+
+int main() {
+    int idade;
+
+    // Solicita a idade ao usuário
+    printf("Digite sua idade: ");
+    scanf("%d", &idade);
+
+    // Estrutura condicional
+    if (idade < 0) {
+        printf("Idade inválida. A idade não pode ser negativa.\n");
+    } else if (idade < 13) {
+        printf("Você é uma criança.\n");
+    } else if (idade < 18) {
+        printf("Você é um adolescente.\n");
+    } else if (idade < 60) {
+        printf("Você é um adulto.\n");
+    } else { // idade >= 60
+        printf("Você é um idoso.\n");
+    }
+
+    return 0;
+}
