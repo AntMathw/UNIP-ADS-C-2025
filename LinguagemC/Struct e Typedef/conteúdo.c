@@ -101,3 +101,69 @@ void calcularMedia(struct Aluno *a) {
     // quando se tem um PONTEIRO para ela. É o mesmo que (*a).media.
     a->media = (a->nota1 + a->nota2) / 2.0;
 }
+
+#include <stdio.h>
+#include <string.h>
+
+// 1. DEFINIÇÃO DA ESTRUTURA SEM TYPEDEF
+struct AlunoAntigo {
+    char nome[50];
+    int matricula;
+    float media;
+};
+
+// 2. DEFINIÇÃO DA ESTRUTURA COM TYPEDEF
+// O 'typedef' cria o alias 'Aluno' para 'struct AlunoNovo'
+typedef struct AlunoNovo {
+    char nome[50];
+    int matricula;
+    float media;
+} Aluno; // <- Este é o novo nome do tipo
+
+// 3. TYPEDEF PARA TIPOS PRIMITIVOS (para melhorar a legibilidade/portabilidade)
+typedef int Inteiro;
+typedef float Nota;
+
+
+int main() {
+    // ---------------------------------------------
+    // Demonstração do uso da estrutura SEM typedef
+    // ---------------------------------------------
+    // Obrigatório usar a palavra 'struct'
+    struct AlunoAntigo a1;
+    strcpy(a1.nome, "Maria Silva");
+    a1.matricula = 1001;
+    a1.media = 9.5;
+    
+    printf("--- Uso Sem Typedef ---\n");
+    printf("Nome: %s, Matrícula: %d, Média: %.2f\n", a1.nome, a1.matricula, a1.media);
+    
+    // ---------------------------------------------
+    // Demonstração do uso da estrutura COM typedef
+    // ---------------------------------------------
+    // O uso é mais limpo, como se fosse um tipo primitivo
+    Aluno a2; 
+    
+    // Demonstração com o typedef para tipos primitivos
+    Inteiro nova_matricula = 2002;
+    Nota nova_nota = 7.8;
+    
+    strcpy(a2.nome, "João Souza");
+    a2.matricula = nova_matricula; // Usa o Inteiro (typedef para int)
+    a2.media = nova_nota;          // Usa a Nota (typedef para float)
+    
+    printf("\n--- Uso Com Typedef ---\n");
+    printf("Nome: %s, Matrícula: %d, Média: %.2f\n", a2.nome, a2.matricula, a2.media);
+    
+    // ---------------------------------------------
+    // Demonstração do uso com ponteiros (onde typedef brilha)
+    // ---------------------------------------------
+    
+    // Cria um ponteiro para o tipo Aluno
+    Aluno *ptr_aluno = &a2;
+
+    printf("\n--- Uso de Ponteiro com Typedef ---\n");
+    printf("Nome via ponteiro: %s\n", ptr_aluno->nome);
+    
+    return 0;
+}
