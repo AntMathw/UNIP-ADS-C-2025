@@ -80,3 +80,41 @@ int main() {
 
     return 0;
 }
+
+#include <stdio.h>
+
+// Definição dos critérios de aprovação
+#define NOTA_MINIMA_APROVACAO 7.0
+#define NOTA_MINIMA_RECUPERACAO 5.0
+
+int main() {
+    // Declaração da variável para armazenar a nota do aluno
+    float nota;
+
+    // --- ENTRADA DE DADOS ---
+    printf("Sistema de Avaliacao de Aluno\n");
+    printf("-------------------------------\n");
+    printf("Digite a nota final do aluno (Ex: 8.5): ");
+    // Lê o valor digitado pelo usuário e armazena na variável 'nota'
+    scanf("%f", &nota);
+
+    // --- ESTRUTURA CONDICIONAL (IF-ELSE IF-ELSE) ---
+    printf("\nResultado da Avaliacao:\n");
+
+    // Verifica a primeira condicao: Aprovado
+    if (nota >= NOTA_MINIMA_APROVACAO) {
+        printf("Parabens! O aluno esta APROVADO.\n");
+    }
+    // Se a primeira condicao for falsa, verifica a segunda: Recuperacao
+    else if (nota >= NOTA_MINIMA_RECUPERACAO) {
+        printf("Atencao! O aluno esta em RECUPERACAO.\n");
+    }
+    // Se nenhuma das condicoes anteriores for verdadeira: Reprovado
+    else {
+        printf("Infelizmente, o aluno esta REPROVADO.\n");
+    }
+
+    printf("\nPrograma finalizado.\n");
+
+    return 0;
+}
