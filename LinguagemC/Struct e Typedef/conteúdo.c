@@ -167,3 +167,44 @@ int main() {
     
     return 0;
 }
+
+#include <stdio.h>
+
+// 1. Uso de 'typedef' para criar um apelido para um tipo básico
+// Agora, em vez de 'int', podemos usar 'Inteiro' para declarar variáveis.
+typedef int Inteiro;
+
+// 2. Uso de 'typedef' para simplificar a declaração de uma 'struct'
+// Definimos uma estrutura para um Ponto 2D (coordenadas x e y).
+typedef struct {
+    float x;
+    float y;
+} Ponto; // O nome 'Ponto' é o apelido (apelido para 'struct { ... }')
+
+// Função que imprime as coordenadas de um Ponto
+void imprimir_ponto(Ponto p) {
+    printf("Coordenadas: (%.2f, %.2f)\n", p.x, p.y);
+}
+
+int main() {
+    // Declaração de variável usando o 'typedef' Inteiro
+    Inteiro numero_favorito = 42;
+    printf("Meu número favorito (tipo Inteiro): %d\n", numero_favorito);
+
+    // Declaração de variável usando o 'typedef' Ponto
+    // Não precisamos escrever 'struct Ponto p1 = ...'
+    Ponto p1;
+
+    p1.x = 10.5;
+    p1.y = 20.3;
+
+    printf("\nEstrutura Ponto:\n");
+    imprimir_ponto(p1);
+
+    // Exemplo adicional: inicialização mais rápida
+    Ponto p2 = { -5.0, 7.8 };
+    printf("Outro ponto:\n");
+    imprimir_ponto(p2);
+
+    return 0;
+}
