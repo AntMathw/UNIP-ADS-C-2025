@@ -208,3 +208,58 @@ int main() {
 
     return 0;
 }
+
+#include <stdio.h>
+#include <string.h> // Necessário para a funcao strcpy()
+
+// 1. DEFINIÇÃO DA ESTRUTURA (STRUCT)
+// Cria um novo tipo de dado chamado Aluno
+struct Aluno {
+    char nome[50];       // String para o nome
+    int matricula;       // Numero inteiro para a matricula
+    float nota_final;    // Numero decimal para a nota
+};
+
+int main() {
+    // 2. DECLARAÇÃO E INICIALIZAÇÃO DA ESTRUTURA
+    // Cria uma variável chamada 'estudante' do tipo struct Aluno
+    struct Aluno estudante;
+
+    // --- ENTRADA DE DADOS ---
+    printf("--- Cadastro de Aluno ---\n");
+
+    // Coletar Nome
+    printf("Digite o nome do aluno: ");
+    // Uso de fgets para ler a linha inteira, incluindo espacos
+    fgets(estudante.nome, sizeof(estudante.nome), stdin);
+    // Remove o caractere de nova linha (\n) que o fgets adiciona
+    if (estudante.nome[strlen(estudante.nome) - 1] == '\n') {
+        estudante.nome[strlen(estudante.nome) - 1] = '\0';
+    }
+
+    // Coletar Matricula
+    printf("Digite a matricula (apenas numeros): ");
+    scanf("%d", &estudante.matricula);
+
+    // Coletar Nota Final
+    printf("Digite a nota final: ");
+    scanf("%f", &estudante.nota_final);
+
+    // --- PROCESSAMENTO E SAÍDA DE DADOS ---
+    printf("\n--- Dados do Aluno Cadastrado ---\n");
+    printf("Nome: %s\n", estudante.nome);
+    printf("Matricula: %d\n", estudante.matricula);
+    printf("Nota Final: %.2f\n", estudante.nota_final);
+
+    // 3. ESTRUTURA CONDICIONAL (Usando o dado da struct)
+    printf("Situacao: ");
+    if (estudante.nota_final >= 7.0) {
+        printf("APROVADO\n");
+    } else if (estudante.nota_final >= 5.0) {
+        printf("RECUPERACAO\n");
+    } else {
+        printf("REPROVADO\n");
+    }
+
+    return 0;
+}
