@@ -136,3 +136,37 @@ int main() {
 
     return 0;
 }
+
+#include <stdio.h>
+
+int main() {
+    // 1. Declaracao de uma variavel comum
+    int idade = 25;
+
+    // 2. Declaracao de um ponteiro
+    // O asterisco (*) indica que 'ptr_idade' é um ponteiro para um inteiro (int)
+    int *ptr_idade;
+
+    // 3. Atribuicao do endereco
+    // O operador E comercial (&) retorna o endereco de memoria da variavel 'idade'
+    ptr_idade = &idade;
+
+    printf("--- Valores Iniciais ---\n");
+    printf("Valor da variavel 'idade': %d\n", idade);
+    printf("Endereco de 'idade' (&idade): %p\n", &idade);
+    printf("Valor do ponteiro 'ptr_idade' (Endereco armazenado): %p\n", ptr_idade);
+    // O asterisco aqui é o operador de desreferencia (acessa o valor no endereco)
+    printf("Valor apontado por 'ptr_idade' (*ptr_idade): %d\n", *ptr_idade);
+
+    // 4. Modificacao do valor usando o ponteiro (Desreferenciação)
+    // Estamos mudando o valor na posicao de memoria apontada.
+    printf("\n--- Modificando o valor usando o ponteiro ---\n");
+    *ptr_idade = 30; // Altera o valor de 'idade' para 30
+
+    // 5. Verificacao dos novos valores
+    printf("\n--- Valores Apos a Modificacao ---\n");
+    printf("Novo valor da variavel 'idade': %d\n", idade);
+    printf("Novo valor apontado por 'ptr_idade': %d\n", *ptr_idade);
+
+    return 0;
+}
