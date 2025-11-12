@@ -139,3 +139,72 @@ int main() {
         // O fgets armazena a quebra de linha ('\n'). 
         // Para uma exibição mais limpa, removemos ela se for o último caractere.
         size
+
+#include <stdio.h>
+#include <stdlib.h> // Para a função exit()
+
+// Define o nome do arquivo que será manipulado
+#define NOME_ARQUIVO "dados_do_projeto.txt"
+
+int main() {
+    // Declara um ponteiro de arquivo
+    FILE *arquivo;
+    char texto_escrita[] = "Este e o conteudo escrito no arquivo.\nNova linha de dados.";
+    char buffer_leitura[100]; // Buffer para armazenar o texto lido
+
+    // --- 1. MODO ESCRITA (W - write) ---
+    // O modo "w" cria o arquivo se ele nao existir, ou sobrescreve se existir.
+    printf("1. Tentando abrir o arquivo em modo de ESCRITA ('w')...\n");
+    arquivo = fopen(NOME_ARQUIVO, "w");
+
+    // Verifica se o arquivo foi aberto com sucesso
+    if (arquivo == NULL) {
+        printf("ERRO: Nao foi possivel abrir o arquivo para escrita.\n");
+        // A funcao exit(1) encerra o programa com um codigo de erro
+        return 1; 
+    }
+
+    // Escreve a string no arquivo
+    fprintf(arquivo, "%s", texto_escrita);
+    printf("-> Dados escritos com sucesso: \"%s...\"\n", texto_escrita);
+
+    // Fecha o arquivo apos a escrita
+    fclose(arquivo);
+    printf("-> Arquivo fechado apos escrita.\n");
+
+    // --- 2. MODO LEITURA (R - read) ---
+    // O modo "r" abre o arquivo apenas para leitura.
+    printf("\n2. Tentando abrir o arquivo em modo de LEITURA ('r')...\n");
+    arquivo = fopen(NOME_ARQUIVO, "r");
+
+    // Verifica se o arquivo foi aberto com sucesso
+    if (arquivo == NULL) {
+        printf("ERRO: Nao foi possivel abrir o arquivo para leitura.\n");
+        return 1; 
+    }
+
+    printf("-> Conteudo lido do arquivo:\n");
+
+    // Loop para ler linha por linha do arquivo (usando fgets)
+    // O loop continua ate que a funcao fgets retorne NULL (fim do arquivo)
+    while (fgets(buffer_leitura, sizeof(buffer_leitura), arquivo) != NULL) {
+        printf("%s", buffer_leitura);
+    }
+    
+    // Fecha o arquivo apos a leitura
+    fclose(arquivo);
+    printf("\n-> Arquivo fechado apos leitura.\n");
+
+    // --- 3. MODO ANEXAR (A - append) [Demonstrativo] ---
+    // Para demonstrar o modo "a" (append): adiciona dados sem sobrescrever.
+    printf("\n3. Tentando abrir o arquivo em modo ANEXAR ('a')...\n");
+    arquivo = fopen(NOME_ARQUIVO, "a");
+    
+    if (arquivo != NULL) {
+        fprintf(arquivo, "\n--- Esta linha foi adicionada via MODO ANEXAR ---");
+        printf("-> Conteudo anexado (append) com sucesso.\n");
+        fclose(arquivo);
+    }
+
+    return 0;
+}
