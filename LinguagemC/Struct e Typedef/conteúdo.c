@@ -263,3 +263,42 @@ int main() {
 
     return 0;
 }
+
+#include <stdio.h>
+
+// 1. Definindo a estrutura (struct) para um Ponto 2D
+struct Ponto2D {
+    int x;
+    int y;
+};
+
+// 2. Usando typedef para dar um apelido (alias) à estrutura
+// 'Ponto' agora é um apelido para 'struct Ponto2D'
+typedef struct Ponto2D Ponto;
+
+// --- Função Principal ---
+int main() {
+    // 3. Declarando variáveis usando o apelido 'Ponto' (mais limpo)
+    // Em vez de "struct Ponto2D p1;", usamos apenas "Ponto p1;"
+    Ponto p1;
+    Ponto p2;
+
+    // 4. Atribuindo valores
+    p1.x = 10;
+    p1.y = 5;
+
+    p2.x = -3;
+    p2.y = 8;
+
+    // 5. Imprimindo os valores
+    printf("--- Exemplo de Uso de typedef ---\n");
+    printf("Ponto 1 (x, y): (%d, %d)\n", p1.x, p1.y);
+    printf("Ponto 2 (x, y): (%d, %d)\n", p2.x, p2.y);
+
+    // 6. Demonstração extra: typedef para um tipo básico
+    typedef int Inteiro;
+    Inteiro idade = 25;
+    printf("Idade (usando Inteiro, um apelido para int): %d\n", idade);
+
+    return 0;
+}
