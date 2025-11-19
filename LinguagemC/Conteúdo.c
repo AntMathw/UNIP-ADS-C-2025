@@ -388,6 +388,29 @@ int main() {
     return 0; // Indica que o programa foi executado com sucesso
 }
 
+#include <stdio.h>
+
+// Função principal onde a execução do programa começa
+int main() {
+    // 1. Declaração de variáveis inteiras (integers)
+    int numero1 = 15;
+    int numero2 = 7;
+    int soma;
+
+    // Mensagem de introdução
+    printf("--- Exemplo de Código Simples em C ---\n\n");
+
+    // 2. Realização da operação de soma
+    soma = numero1 + numero2;
+
+    // 3. Impressão dos resultados na tela (saída)
+    printf("O primeiro número é: %d\n", numero1);
+    printf("O segundo número é: %d\n", numero2);
+    printf("A soma dos dois números é: %d\n", soma);
+
+    // Retorna 0 para indicar que o programa foi executado com sucesso
+    return 0;
+}
 
 
 
