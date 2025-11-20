@@ -412,6 +412,45 @@ int main() {
     return 0;
 }
 
+#include <stdio.h>
+
+// Função principal
+int main() {
+    // Declaração das variáveis
+    int n;          // O número fornecido pelo usuário
+    long long fatorial = 1; // Variável para armazenar o resultado. Usa-se 'long long' para suportar fatoriais maiores.
+    int i;          // Contador do loop
+
+    printf("--- Calculadora de Fatorial em C ---\n\n");
+
+    // Solicita que o usuário insira um número
+    printf("Digite um número inteiro positivo: ");
+
+    // Lê o número fornecido pelo usuário
+    if (scanf("%d", &n) != 1) {
+        printf("Erro de entrada. Por favor, insira um número inteiro.\n");
+        return 1; // Retorna 1 para indicar erro
+    }
+
+    // Verifica se o número é não-negativo (o fatorial é definido para n >= 0)
+    if (n < 0) {
+        printf("O fatorial não é definido para números negativos.\n");
+    } else if (n == 0) {
+        // Fatorial de 0 é 1
+        printf("O fatorial de 0 é 1.\n");
+    } else {
+        // Calcula o fatorial usando um loop 'for'
+        for (i = 1; i <= n; ++i) {
+            // Multiplica o resultado pelo contador em cada iteração
+            fatorial *= i;
+        }
+
+        // Imprime o resultado
+        printf("O fatorial de %d é: %lld\n", n, fatorial);
+    }
+
+    return 0; // Retorna 0 para indicar sucesso
+}
 
 
 
