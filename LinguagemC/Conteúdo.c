@@ -452,6 +452,53 @@ int main() {
     return 0; // Retorna 0 para indicar sucesso
 }
 
+#include <stdio.h>
+
+int main() {
+    // 1. Declaração de Variáveis
+    // float = números decimais (dinheiro)
+    // int = números inteiros (pessoas, porcentagem)
+    float valor_conta, valor_servico, total_final, valor_por_pessoa;
+    int porcentagem_garcom, numero_pessoas;
+
+    printf("--- Calculadora de Racha Conta (C) ---\n\n");
+
+    // 2. Entrada de Dados (scanf)
+    printf("Qual o valor total da conta? R$ ");
+    // O '&' é necessário para dizer ONDE guardar o valor na memória
+    scanf("%f", &valor_conta); 
+
+    printf("Qual a %% do garcom? (ex: 10): ");
+    scanf("%d", &porcentagem_garcom);
+
+    printf("Quantas pessoas vao dividir? ");
+    scanf("%d", &numero_pessoas);
+
+    // 3. Processamento (Multiplicação e Divisão)
+    
+    // IMPORTANTE: Em C, se dividirmos int por int (ex: 10/100), o resultado é 0.
+    // Por isso escrevemos 100.0 para forçar uma divisão decimal.
+    valor_servico = valor_conta * (porcentagem_garcom / 100.0);
+    
+    total_final = valor_conta + valor_servico;
+    
+    // Verificação simples para evitar divisão por zero
+    if (numero_pessoas > 0) {
+        valor_por_pessoa = total_final / numero_pessoas;
+
+        // 4. Saída de Dados (printf)
+        // %.2f significa: mostre um float com 2 casas decimais
+        printf("\n--- Resultado ---\n");
+        printf("Valor do servico: R$ %.2f\n", valor_servico);
+        printf("Total com servico: R$ %.2f\n", total_final);
+        printf("------------------------------\n");
+        printf("CADA UM PAGA: R$ %.2f\n", valor_por_pessoa);
+    } else {
+        printf("\nErro: O numero de pessoas deve ser maior que zero.\n");
+    }
+
+    return 0;
+}
 
 
 
