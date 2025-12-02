@@ -336,3 +336,37 @@ int main() {
 
     return 0;
 }
+
+#include <stdio.h>
+#include <string.h>
+
+// 1. Definição da estrutura usando typedef
+// "Aluno" passa a ser o nome do tipo de dado
+typedef struct {
+    char nome[50];
+    int idade;
+    float mediaFinal;
+} Aluno;
+
+int main() {
+    // 2. Declarando variáveis diretamente com o novo nome (sem "struct")
+    Aluno aluno1;
+    Aluno aluno2;
+
+    // Atribuindo dados ao aluno 1
+    strcpy(aluno1.nome, "Carlos Silva");
+    aluno1.idade = 20;
+    aluno1.mediaFinal = 8.5;
+
+    // Atribuindo dados ao aluno 2
+    strcpy(aluno2.nome, "Ana Souza");
+    aluno2.idade = 22;
+    aluno2.mediaFinal = 9.2;
+
+    // Exibindo os dados
+    printf("--- Relatorio de Alunos ---\n");
+    printf("Aluno: %s | Idade: %d | Media: %.2f\n", aluno1.nome, aluno1.idade, aluno1.mediaFinal);
+    printf("Aluno: %s | Idade: %d | Media: %.2f\n", aluno2.nome, aluno2.idade, aluno2.mediaFinal);
+
+    return 0;
+}
