@@ -370,3 +370,174 @@ int main() {
 
     return 0;
 }
+
+#include <stdio.h>
+#include <stdlib.h> // Para malloc e free
+
+// --- 1. Typedef para Tipos Primitivos ---
+
+// Cria um apelido para 'int' para representar ID
+typedef int ID_do_Registro;
+// Cria um apelido para 'float' para representar uma medida
+typedef float Medida_Em_Metros;
+// Cria um apelido para 'unsigned char' para representar um byte de dados
+typedef unsigned char Byte_De_Dados;
+
+// --- 2. Typedef para Ponteiros ---
+
+// Cria um apelido para um ponteiro para 'int'
+typedef int* PtrInteiro;
+// Cria um apelido para um ponteiro para 'char' (comumente usado para strings)
+typedef char* String;
+
+// --- 3. Typedef para Arrays ---
+
+// Cria um novo tipo que é um array de 10 inteiros
+typedef int Vetor10[10];
+// Cria um novo tipo que é um array de 20 caracteres (buffer)
+typedef char Buffer_20[20];
+
+// --- 4. Typedef com Structs ---
+
+// 4.1. Definindo a struct e o typedef ao mesmo tempo (forma mais comum e limpa)
+typedef struct {
+    ID_do_Registro id;          // Usando o typedef de tipo primitivo
+    Buffer_20 nome;             // Usando o typedef de array
+    Medida_Em_Metros altura;
+} Pessoa; // 'Pessoa' é o novo nome do tipo struct
+
+// 4.2. Usando o nome da struct (opcional, mas bom para referências recursivas)
+typedef struct No_S {
+    Pessoa dados;
+    struct No_S *proximo; // Referência recursiva usando o nome da struct
+} No_Simples; // 'No_Simples' é o novo nome do tipo struct No_S
+
+// 4.3. Typedef para um ponteiro para a struct (comum em listas encadeadas)
+typedef No_Simples* Lista; // 'Lista' é um ponteiro para 'No_Simples'
+
+// --- 5. Typedef com Unions ---
+
+// Cria uma union para armazenar diferentes tipos de dados na mesma localização de memória
+typedef union {
+    int valor_inteiro;
+    float valor_flutuante;
+    String valor_string;
+} ValorGenerico; // 'ValorGenerico' é o novo nome do tipo union
+
+// --- 6. Typedef para Ponteiros para Funções ---
+
+// Define a assinatura de uma função:
+// Ela recebe (int a, int b) e retorna um 'int'
+typedef int (*OperacaoMatematica)(int a, int b);
+
+// Implementação das funções que correspondem à assinatura 'OperacaoMatematica'
+int somar(int a, int b) {
+    return a + b;
+}
+
+int multiplicar(int a, int b) {
+    return a * b;
+}
+
+// Função que usa o typedef de ponteiro para função
+int executar_operacao(OperacaoMatematica operacao, int x, int y) {
+    return operacao(x, y);
+}
+
+// --- Funções de Demonstração ---
+
+void demonstrar_tipos_primitivos() {
+    printf("--- 1. Tipos Primitivos ---\n");
+    ID_do_Registro meu_id = 1001;
+    Medida_Em_Metros minha_altura = 1.75f;
+    Byte_De_Dados flag = 0xFF;
+
+    printf("ID: %d\n", meu_id);
+    printf("Altura: %.2f metros\n", minha_altura);
+    printf("Flag (byte): 0x%X\n\n", flag);
+}
+
+void demonstrar_ponteiros_e_arrays() {
+    printf("--- 2. Ponteiros e Arrays ---\n");
+
+    // Uso do typedef PtrInteiro
+    int numero = 42;
+    PtrInteiro ptr_num = &numero;
+    printf("Valor apontado por PtrInteiro: %d\n", *ptr_num);
+
+    // Uso do typedef String
+    String saudacao = "Ola, Typedef!";
+    printf("String: %s\n", saudacao);
+
+    // Uso do typedef Vetor10
+    Vetor10 meu_vetor = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    printf("Primeiro elemento do Vetor10: %d\n", meu_vetor[0]);
+
+    // Uso do typedef Buffer_20
+    Buffer_20 nome_buffer = "C Programming";
+    printf("Buffer: %s\n\n", nome_buffer);
+}
+
+void demonstrar_structs() {
+    printf("--- 3. Structs ---\n");
+
+    Pessoa p1 = {
+        .id = 2002, // Usa ID_do_Registro
+        .altura = 1.83f // Usa Medida_Em_Metros
+    };
+    // Copiar string com segurança para o Buffer_20
+    snprintf(p1.nome, sizeof(p1.nome), "Carlos Silva");
+
+    printf("Pessoa 1 - ID: %d, Nome: %s, Altura: %.2f\n",
+           p1.id, p1.nome, p1.altura);
+
+    // Demonstração da Lista/No_Simples
+    Lista minha_lista = (Lista)malloc(sizeof(No_Simples));
+    if (minha_lista == NULL) {
+        fprintf(stderr, "Erro de alocação de memória!\n");
+        return;
+    }
+
+    minha_lista->dados = p1;
+    minha_lista->proximo = NULL;
+
+    printf("Nó da Lista - Nome da Pessoa: %s\n\n", minha_lista->dados.nome);
+
+    free(minha_lista); // Liberar a memória
+}
+
+void demonstrar_unions() {
+    printf("--- 4. Unions ---\n");
+
+    ValorGenerico v;
+
+    // Armazenar um inteiro
+    v.valor_inteiro = 500;
+    printf("Valor Inteiro: %d\n", v.valor_inteiro);
+
+    // Armazenar um flutuante (sobrescreve o inteiro)
+    v.valor_flutuante = 3.14159f;
+    printf("Valor Flutuante: %.5f\n", v.valor_flutuante);
+
+    // Armazenar uma string (sobrescreve o flutuante - cuidado com strings aqui)
+    // Usando malloc para a string se fosse necessário, mas para demonstração:
+    v.valor_string = "Tipo Misto";
+    printf("Valor String: %s\n\n", v.valor_string);
+}
+
+void demonstrar_ponteiros_para_funcoes() {
+    printf("--- 5. Ponteiros para Funções ---\n");
+
+    // 5.1. Atribuição direta usando o typedef
+    OperacaoMatematica op_soma = somar;
+    int resultado_soma = op_soma(10, 5);
+    printf("Resultado da Soma (10 + 5): %d\n", resultado_soma);
+
+    // 5.2. Passando a função como argumento
+    int resultado_mult = executar_operacao(multiplicar, 10, 5);
+    printf("Resultado da Multiplicação (10 * 5): %d\n\n", resultado_mult);
+}
+
+int main() {
+    demonstrar_tipos_primitivos();
+    demonstrar_ponteiros_
