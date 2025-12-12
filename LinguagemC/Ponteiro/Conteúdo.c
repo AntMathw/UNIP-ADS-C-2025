@@ -170,3 +170,33 @@ int main() {
 
     return 0;
 }
+
+#include <stdio.h>
+
+int main() {
+    // 1. Criamos uma variável normal (inteira)
+    int numero = 10;
+
+    // 2. Criamos o ponteiro
+    // O asterisco (*) diz: "Esta variável vai guardar um endereço"
+    int *ponteiro;
+
+    // 3. Ligamos o ponteiro à variável
+    // O & significa: "Pegue o ENDEREÇO de memória de..."
+    ponteiro = &numero;
+
+    printf("--- Antes da Mudanca ---\n");
+    printf("Valor da variavel 'numero': %d\n", numero);
+    // %p é usado para imprimir endereços de memória (aparece em hexadecimal)
+    printf("Endereco onde 'numero' mora: %p\n", ponteiro);
+    
+    // 4. Acessando e mudando valor pelo ponteiro
+    // Aqui o * significa: "Vá até o endereço apontado e mexa no valor lá dentro"
+    *ponteiro = 50;
+
+    printf("\n--- Depois da Mudanca (via ponteiro) ---\n");
+    // Note que mudamos o valor sem tocar na variável 'numero' diretamente!
+    printf("Novo valor da variavel 'numero': %d\n", numero);
+
+    return 0;
+}
