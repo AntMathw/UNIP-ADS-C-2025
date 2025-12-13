@@ -500,7 +500,51 @@ int main() {
     return 0;
 }
 
+#include <stdio.h>
 
+// Definimos uma função para realizar o cálculo
+double calcular_forca(double massa, double aceleracao) {
+    // F = m * a
+    double forca = massa * aceleracao;
+    return forca;
+}
+
+int main() {
+    // 1. Declaração das variáveis
+    double massa_kg;        // Variável para armazenar a massa em kg
+    double aceleracao_ms2;  // Variável para armazenar a aceleração em m/s^2
+    double forca_newton;    // Variável para armazenar o resultado da força
+
+    // 2. Coleta de dados (Entrada)
+    printf("--- Cálculo da Segunda Lei de Newton (F = m * a) ---\n");
+    
+    // Solicita a massa
+    printf("Digite o valor da massa (em kg): ");
+    // O especificador %lf é usado para ler um double
+    if (scanf("%lf", &massa_kg) != 1) {
+        printf("Erro na leitura da massa.\n");
+        return 1; // Retorna código de erro
+    }
+    
+    // Solicita a aceleração
+    printf("Digite o valor da aceleração (em m/s^2): ");
+    if (scanf("%lf", &aceleracao_ms2) != 1) {
+        printf("Erro na leitura da aceleração.\n");
+        return 1; // Retorna código de erro
+    }
+
+    // 3. Processamento (Cálculo)
+    forca_newton = calcular_forca(massa_kg, aceleracao_ms2);
+
+    // 4. Exibição do resultado (Saída)
+    printf("\n--- Resultado do Cálculo ---\n");
+    printf("Massa (m): %.2lf kg\n", massa_kg);
+    printf("Aceleração (a): %.2lf m/s^2\n", aceleracao_ms2);
+    printf("Força (F): %.2lf Newtons (N)\n", forca_newton);
+    printf("----------------------------\n");
+
+    return 0; // Retorna 0 para indicar sucesso
+}
 
 
 
