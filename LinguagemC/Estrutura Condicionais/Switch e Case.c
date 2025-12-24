@@ -85,3 +85,46 @@ int main() {
 
     return 0;
 }
+
+#include <stdio.h>
+
+int main() {
+    int opcao;
+
+    printf("--- SISTEMA DE ATENDIMENTO ---\n");
+    printf("1. Falar com o suporte técnico\n");
+    printf("2. Consultar fatura\n");
+    printf("3. Alterar dados cadastrais\n");
+    printf("4. Sair\n");
+    printf("------------------------------\n");
+    printf("Escolha uma opção (1-4): ");
+    
+    // Lê a opção do utilizador
+    scanf("%d", &opcao);
+
+    // Estrutura switch para processar a escolha
+    switch (opcao) {
+        case 1:
+            printf("\nA encaminhar para o suporte técnico... Por favor, aguarde.\n");
+            break;
+            
+        case 2:
+            printf("\nA sua fatura atual é de 45,90€. Enviada para o seu e-mail.\n");
+            break;
+            
+        case 3:
+            printf("\nPara alterar os dados, aceda ao nosso portal Web.\n");
+            break;
+            
+        case 4:
+            printf("\nA encerrar o sistema. Obrigado!\n");
+            break;
+            
+        default:
+            // Caso o utilizador digite algo fora do intervalo 1-4
+            printf("\nOpção inválida! Por favor, tente novamente.\n");
+            break;
+    }
+
+    return 0;
+}
