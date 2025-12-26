@@ -541,3 +541,51 @@ void demonstrar_ponteiros_para_funcoes() {
 int main() {
     demonstrar_tipos_primitivos();
     demonstrar_ponteiros_
+
+#include <stdio.h>
+
+// 1. Usando typedef em tipos primitivos
+// Agora, onde eu escrever 'Reais', o C entende que é um 'float'
+typedef float Reais;
+
+// 2. Usando typedef em Structs (O uso mais comum!)
+// Sem o typedef, teriamos que escrever "struct Heroi" toda vez.
+typedef struct {
+    char nome[30];
+    int nivel;
+    Reais vida;  // Usando o nosso apelido 'Reais'
+    Reais ataque;
+} Heroi;
+
+int main() {
+    printf("--- Criador de Personagem ---\n");
+
+    // 3. Declarando a variável
+    // Note que não preciso escrever "struct Heroi player1".
+    // Apenas "Heroi" basta, pois é o apelido que criamos.
+    Heroi player1;
+
+    // Entrada de dados
+    printf("Nome do heroi: ");
+    // %29s limita a leitura para evitar estourar o buffer
+    scanf("%29s", player1.nome); 
+
+    printf("Nivel inicial: ");
+    scanf("%d", &player1.nivel);
+
+    printf("Vida (HP): ");
+    scanf("%f", &player1.vida);
+
+    printf("Poder de Ataque: ");
+    scanf("%f", &player1.ataque);
+
+    // Saída de dados
+    printf("\n--- Status do Heroi ---\n");
+    printf("Nome:   %s\n", player1.nome);
+    printf("Nivel:  %d\n", player1.nivel);
+    // %.1f para uma casa decimal
+    printf("Vida:   %.1f HP\n", player1.vida); 
+    printf("Ataque: %.1f pts\n", player1.ataque);
+
+    return 0;
+}
