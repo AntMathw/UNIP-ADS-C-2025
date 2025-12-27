@@ -589,3 +589,64 @@ int main() {
 
     return 0;
 }
+
+#include <stdio.h>
+#include <string.h>
+
+// 1. Definição da Struct
+// Estamos criando um novo tipo de dado chamado 'Aluno'
+typedef struct {
+    char nome[50];
+    int idade;
+    float nota1;
+    float nota2;
+    float media;
+} Aluno;
+
+// Função para calcular a média (recebe a struct como parâmetro)
+void calcularMedia(Aluno *a) {
+    // Usamos o operador '->' porque 'a' é um ponteiro para a struct
+    a->media = (a->nota1 + a->nota2) / 2.0;
+}
+
+int main() {
+    // 2. Declaração da variável do tipo Aluno
+    Aluno estudante;
+
+    printf("--- Cadastro de Aluno ---\n");
+
+    // 3. Entrada de dados
+    printf("Digite o nome do aluno: ");
+    // O espaço antes do % garante a limpeza do buffer do teclado
+    scanf(" %[^\n]", estudante.nome); 
+
+    printf("Digite a idade: ");
+    scanf("%d", &estudante.idade);
+
+    printf("Digite a Nota 1: ");
+    scanf("%f", &estudante.nota1);
+
+    printf("Digite a Nota 2: ");
+    scanf("%f", &estudante.nota2);
+
+    // 4. Processamento
+    // Passamos o endereço de memória (&) para modificar a struct original
+    calcularMedia(&estudante);
+
+    // 5. Saída de dados
+    // Usamos o ponto (.) para acessar os campos quando temos a variável direta
+    printf("\n--- Relatorio Final ---\n");
+    printf("Nome: %s\n", estudante.nome);
+    printf("Idade: %d anos\n", estudante.idade);
+    printf("Notas: %.1f e %.1f\n", estudante.nota1, estudante.nota2);
+    printf("Media Final: %.2f\n", estudante.media);
+
+    // Verificação simples
+    if (estudante.media >= 7.0) {
+        printf("Status: APROVADO\n");
+    } else {
+        printf("Status: REPROVADO\n");
+    }
+
+    return 0;
+}
