@@ -118,3 +118,53 @@ int main() {
 
     return 0;
 }
+
+#include <stdio.h>
+
+// Cores para deixar o terminal bonito
+#define QUENTE "\033[1;31m"  // Vermelho
+#define MORNO  "\033[1;33m"  // Amarelo
+#define BOM    "\033[1;32m"  // Verde
+#define FRIO   "\033[1;34m"  // Azul
+#define RESET  "\033[0m"
+
+int main() {
+    float temperatura;
+
+    printf("=== ASSISTENTE DE CLIMA ===\n");
+    printf("Quantos graus esta fazendo agora? ");
+    scanf("%f", &temperatura);
+
+    printf("\n>>> Analise: ");
+
+    // 1. Estrutura Condicional
+    // O programa testa as condições de cima para baixo.
+    
+    if (temperatura > 32) {
+        // Se for maior que 32, entra aqui e PULA todo o resto.
+        printf("%sCALOR EXTREMO!%s\n", QUENTE, RESET);
+        printf("Dica: Beba muita agua e fique na sombra.\n");
+    
+    } else if (temperatura >= 25) {
+        // Só chega aqui se for menor ou igual a 32.
+        printf("%sDia de Verao.%s\n", MORNO, RESET);
+        printf("Dica: Otimo para praia ou piscina.\n");
+    
+    } else if (temperatura >= 15) {
+        // Só chega aqui se for menor que 25.
+        printf("%sClima Agradavel.%s\n", BOM, RESET);
+        printf("Dica: Bom para caminhar no parque.\n");
+    
+    } else if (temperatura >= 5) {
+        // Só chega aqui se for menor que 15.
+        printf("%sEsta Frio.%s\n", FRIO, RESET);
+        printf("Dica: Use casaco e tome cafe quente.\n");
+    
+    } else {
+        // Se nenhuma das anteriores for verdade (menor que 5).
+        printf("%sCONGELANTE!%s\n", FRIO, RESET);
+        printf("Dica: Fique em casa debaixo das cobertas!\n");
+    }
+
+    return 0;
+}
