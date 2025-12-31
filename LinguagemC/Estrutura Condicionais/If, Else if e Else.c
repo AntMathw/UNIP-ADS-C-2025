@@ -168,3 +168,52 @@ int main() {
 
     return 0;
 }
+
+#include <stdio.h>
+
+#define VERDE "\033[1;32m"
+#define AMARELO "\033[1;33m"
+#define VERMELHO "\033[1;31m"
+#define RESET "\033[0m"
+
+int main() {
+    float velocidade, excesso, valor_multa;
+    const float LIMITE = 80.0; // Usar const é boa prática para valores fixos
+
+    printf("=== RADAR ELETRONICO 2.0 ===\n");
+    printf("Velocidade da via: %.0f km/h\n", LIMITE);
+    printf("----------------------------\n");
+    
+    printf("Digite a velocidade capturada (km/h): ");
+    scanf("%f", &velocidade);
+
+    printf("\n>>> RESULTADO: ");
+
+    // 1. Primeira verificação: Está dentro do limite?
+    if (velocidade <= LIMITE) {
+        printf("%sDENTRO DO LIMITE%s\n", VERDE, RESET);
+        printf("Boa viagem! Dirija com seguranca.\n");
+
+    } 
+    // 2. Segunda verificação: Está na margem de tolerância? (Até +10km/h)
+    // Note o uso do && (E) para garantir o intervalo exato
+    else if (velocidade > LIMITE && velocidade <= (LIMITE + 10)) {
+        printf("%sADVERTENCIA (Tolerancia)%s\n", AMARELO, RESET);
+        printf("Cuidado, voce esta acima do limite, mas dentro da tolerancia.\n");
+        printf("Reduza a velocidade!\n");
+
+    } 
+    // 3. Caso contrário: Multa!
+    else {
+        printf("%sMULTADO!%s\n", VERMELHO, RESET);
+        
+        // Calcular o prejuízo
+        excesso = velocidade - LIMITE;
+        valor_multa = excesso * 10.00; // 10 reais por km excedido
+
+        printf("Voce passou a %.1f km/h (%.1f km/h acima).\n", velocidade, excesso);
+        printf("Valor da Multa: R$ %.2f\n", valor_multa);
+    }
+
+    return 0;
+}
