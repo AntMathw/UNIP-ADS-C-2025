@@ -546,6 +546,21 @@ int main() {
     return 0; // Retorna 0 para indicar sucesso
 }
 
+#include <stdio.h>
 
+int main() {
+    // Declaramos uma "string" (vetor de caracteres) para armazenar o nome da cor
+    char cor[20];
+
+    printf("Ola! Qual e a sua cor favorita? ");
+    
+    // O %s serve para ler uma palavra (string)
+    // O limite [19] evita que o usuario digite algo maior que o espaco reservado
+    scanf("%19s", cor);
+
+    printf("\nQue legal! %s tambem e uma cor muito bonita.\n", cor);
+
+    return 0;
+}
 
 
