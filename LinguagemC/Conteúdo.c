@@ -563,4 +563,39 @@ int main() {
     return 0;
 }
 
+#include <stdio.h>
+
+/**
+ * Programa simples para calcular a média de dois números.
+ * Demonstra o uso de variáveis, entrada de dados (scanf) e saída (printf).
+ */
+int main() {
+    // Declaração de variáveis
+    float numero1, numero2, media;
+
+    printf("--- Calculadora de Média Simples ---\n\n");
+
+    // Entrada de dados
+    printf("Introduza o primeiro número: ");
+    scanf("%f", &numero1);
+
+    printf("Introduza o segundo número: ");
+    scanf("%f", &numero2);
+
+    // Processamento
+    media = (numero1 + numero2) / 2;
+
+    // Saída de resultados
+    // %.2f limita a exibição a duas casas decimais
+    printf("\nA média entre %.2f e %.2f é: %.2f\n", numero1, numero2, media);
+
+    // Condicional simples para feedback
+    if (media >= 9.5) {
+        printf("Resultado: Aprovado!\n");
+    } else {
+        printf("Resultado: Necessita de melhoria.\n");
+    }
+
+    return 0;
+}
 
