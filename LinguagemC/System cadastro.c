@@ -22,11 +22,11 @@ void formatar_nome(char str[]) {
 }
 
 int main() {
-    // Inicializando com "" para garantir que a memória esteja limpa
     char nome[50] = "";
     char sobrenome[50] = "";
+    int idade;
 
-    // Ajustei o cabeçalho para ficar simétrico
+    // --- CABEÇALHO ---
     printf("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n");
     printf("|                                         |\n");
     printf("|          BEM VINDO AO SISTEMA           |\n");
@@ -39,77 +39,77 @@ int main() {
     printf("\nOla usuario, entao vamos comecar o seu cadastro!\n");
     printf("-------------------------------------------\n");
     SLEEP_MS(2000);
-
-    printf("Primeiramente gostaria de saber seu nome e sobrenome!\n");
+    printf("Primeiro, preciso saber o seu nome e sobrenome.\n");
     printf("-------------------------------------------\n");
     SLEEP_MS(2000);
 
-    // Exemplo de como ler com segurança:
+    // --- LOOP NOME ---
     while (1) {
-    printf("Digite seu nome: ");
-    if (fgets(nome, sizeof(nome), stdin) != NULL) {
+        printf("Digite seu nome: ");
+        if (fgets(nome, sizeof(nome), stdin) != NULL) {
+            SLEEP_MS(2000);
+            nome[strcspn(nome, "\n")] = '\0'; // Remove o Enter
 
-        nome[strcspn(nome, "\n")] = '\0';
+            if (strlen(nome) == 0) {
+                printf("Erro: Preencha o campo corretamente!\n");
+            } else if (strlen(nome) <= 2) {
+                printf("Erro: Nome muito curto! Tente novamente.\n");
+            } else if (strlen(nome) >= 30) {
+                printf("Erro: Nome muito longo! Tente novamente.\n");
+            } else {
+                formatar_nome(nome);
+                break;
+            }
+        }
+    }
 
-    if (strlen(nome) <= 2){
-        printf("Erro: Nome muito curto! Tente novamente.");
-        
-    }
-    else if (strlen(nome) > 30){
-        printf("Erro: Nome muito longo! Tente novamente.");
-        
+   
+    while (1) {
+        printf("Certo, agora digite seu sobrenome: ");
+        if (fgets(sobrenome, sizeof(sobrenome), stdin) != NULL) {
+            SLEEP_MS(2000);
+            sobrenome[strcspn(sobrenome, "\n")] = '\0';
 
+            if (strlen(sobrenome) == 0) {
+                printf("Erro: Preencha o campo corretamente!\n");
+            } else if (strlen(sobrenome) <= 2) {
+                printf("Erro: Sobrenome muito curto! Tente novamente.\n");
+            } else if (strlen(sobrenome) >= 30) {
+                printf("Erro: Sobrenome muito longo! Tente novamente.\n");
+            } else {
+                formatar_nome(sobrenome);
+                break;
+            }
+        }
     }
-    else if (strlen(nome) == 0){
-        printf("Erro: Preencha o campo corretamente!");
-        
-    }
-    else {
-        formatar_nome(nome);
-        break;
-        }   
-    }
-}   
-    
-    printf("Certo, agora digite seu sobrenome: ");
-    scanf("%s", sobrenome);
-    formatar_nome(sobrenome);
-    SLEEP_MS(2000);
 
-    printf("Seu nome completo e %s %s\n", nome, sobrenome);
+    printf("\nSeu nome completo e: %s %s\n", nome, sobrenome);
+    printf("--------------------------------------------\n");
     SLEEP_MS(2000);
 
     printf("Certo! Agora gostaria de saber a sua idade e seu CPF!\n");
     printf("-------------------------------------------\n");
     SLEEP_MS(2000);
-    int idade;
+
     
-    while (1){
-        while (1) {
+    while (1) {
         printf("Digite sua idade: ");
-       
         if (scanf("%d", &idade) != 1) { 
             printf("Erro: Por favor, digite apenas numeros.\n");
-            
-            while (getchar() != '\n'); 
+            while (getchar() != '\n'); // Limpa o lixo do teclado
             continue; 
         }
 
-        
         if (idade <= 0 || idade > 120) {
             printf("Idade invalida! Tente novamente (0-120).\n");
-            continue;
-        } 
-        else {
-    
-            printf("Idade %d registrada com sucesso!\n", idade);
+        } else {
+            printf("Você possui %d anos. Registrado com sucesso!\n", idade);
             break; 
         }
     }
 
-    printf("Prosseguindo para o proximo passo...\n");
-    return 0;
-}
+    printf("\nProsseguindo para o proximo passo...\n");
+    SLEEP_MS(2000);
 
     return 0;
 }
