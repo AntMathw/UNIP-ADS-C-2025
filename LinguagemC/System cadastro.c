@@ -45,11 +45,71 @@ int main() {
     SLEEP_MS(2000);
 
     // Exemplo de como ler com segurança:
+    while (1) {
     printf("Digite seu nome: ");
-    scanf("%s", nome); 
-    formatar_nome(nome);
+    if (fgets(nome, sizeof(nome), stdin) != NULL) {
 
-    printf("Nome registrado: %s\n", nome);
+        nome[strcspn(nome, "\n")] = '\0';
+
+    if (strlen(nome) <= 2){
+        printf("Erro: Nome muito curto! Tente novamente.");
+        
+    }
+    else if (strlen(nome) > 30){
+        printf("Erro: Nome muito longo! Tente novamente.");
+        
+
+    }
+    else if (strlen(nome) == 0){
+        printf("Erro: Preencha o campo corretamente!");
+        
+    }
+    else {
+        formatar_nome(nome);
+        break;
+        }   
+    }
+}   
+    
+    printf("Certo, agora digite seu sobrenome: ");
+    scanf("%s", sobrenome);
+    formatar_nome(sobrenome);
+    SLEEP_MS(2000);
+
+    printf("Seu nome completo e %s %s\n", nome, sobrenome);
+    SLEEP_MS(2000);
+
+    printf("Certo! Agora gostaria de saber a sua idade e seu CPF!\n");
+    printf("-------------------------------------------\n");
+    SLEEP_MS(2000);
+    int idade;
+    
+    while (1){
+        while (1) {
+        printf("Digite sua idade: ");
+       
+        if (scanf("%d", &idade) != 1) { 
+            printf("Erro: Por favor, digite apenas numeros.\n");
+            
+            while (getchar() != '\n'); 
+            continue; 
+        }
+
+        
+        if (idade <= 0 || idade > 120) {
+            printf("Idade invalida! Tente novamente (0-120).\n");
+            continue;
+        } 
+        else {
+    
+            printf("Idade %d registrada com sucesso!\n", idade);
+            break; 
+        }
+    }
+
+    printf("Prosseguindo para o proximo passo...\n");
+    return 0;
+}
 
     return 0;
 }
