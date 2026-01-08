@@ -25,6 +25,7 @@ int main() {
     char nome[50] = "";
     char sobrenome[50] = "";
     int idade;
+    char cpf[12] = "";
 
     // --- CABEÇALHO ---
     printf("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n");
@@ -103,13 +104,51 @@ int main() {
         if (idade <= 0 || idade > 120) {
             printf("Idade invalida! Tente novamente (0-120).\n");
         } else {
-            printf("Você possui %d anos. Registrado com sucesso!\n", idade);
+            printf("Voce possui %d anos. Registrado com sucesso!\n", idade);
+            printf("--------------------------------------------\n");
             break; 
         }
     }
 
     printf("\nProsseguindo para o proximo passo...\n");
+    printf("-------------------------------------------\n");
     SLEEP_MS(2000);
+
+    while (1) {
+        printf("Digite seu CPF (somente 11 numeros): ");
+        if (scanf("%s", cpf) == 1){
+        while (getchar() != '\n');
+
+            if(strlen(cpf) < 11){
+                printf("CPF inválido! Tente novamente.\n");
+            
+            } 
+            else if(strlen(cpf) > 11){
+                printf("CPF muito longo! Tente novamente. \n");
+
+            } 
+            else if(strlen(cpf) == 0){
+                printf("Erro: Preencha o campo corretamente.\n");
+            } 
+            else {
+                printf("Seu CPF e %s. Registrado com sucesso!\n", cpf);
+                break;
+        }
+    }
+ }
+        
+        printf("\nEntao usuario seu cadastro ficou assim: \n");
+    printf("-------------------------------------------\n");
+    printf("E importante verificar se os dados estao corretos! \n");
+    SLEEP_MS(2000);
+    
+    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+    printf("|                                           |\n");
+    printf("|      Nome Completo: \"%s\" \"%s\"         |\n", nome, sobrenome);
+    printf("|      Idade: %d anos                       |\n", idade);
+    printf("|      CPF: %s                              |\n", cpf);
+    printf("|                                           |\n");
+    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
 
     return 0;
 }
