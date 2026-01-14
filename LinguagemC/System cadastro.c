@@ -1,4 +1,4 @@
-///MATERIAL DE ESTOUDOS EM DESENVOLVIMENTO
+///MATERIAL APENAS PARA ESTUDOS
 
 #include <stdio.h>
 #include <string.h> 
@@ -25,7 +25,9 @@ int main() {
     char nome[50] = "";
     char sobrenome[50] = "";
     int idade;
-    char cpf[12] = "";
+    char cpf[15] = ""; 
+    char email[100] = "";
+    int arroba_encontrado = 0;
 
     // --- CABEÇALHO ---
     printf("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n");
@@ -39,17 +41,16 @@ int main() {
 
     printf("\nOla usuario, entao vamos comecar o seu cadastro!\n");
     printf("-------------------------------------------\n");
-    SLEEP_MS(2000);
+    SLEEP_MS(1000);
     printf("Primeiro, preciso saber o seu nome e sobrenome.\n");
     printf("-------------------------------------------\n");
-    SLEEP_MS(2000);
+    SLEEP_MS(1000);
 
     // --- LOOP NOME ---
     while (1) {
         printf("Digite seu nome: ");
         if (fgets(nome, sizeof(nome), stdin) != NULL) {
-            SLEEP_MS(2000);
-            nome[strcspn(nome, "\n")] = '\0'; // Remove o Enter
+            nome[strcspn(nome, "\n")] = '\0'; 
 
             if (strlen(nome) == 0) {
                 printf("Erro: Preencha o campo corretamente!\n");
@@ -64,19 +65,15 @@ int main() {
         }
     }
 
-   
     while (1) {
         printf("Certo, agora digite seu sobrenome: ");
         if (fgets(sobrenome, sizeof(sobrenome), stdin) != NULL) {
-            SLEEP_MS(2000);
             sobrenome[strcspn(sobrenome, "\n")] = '\0';
 
             if (strlen(sobrenome) == 0) {
                 printf("Erro: Preencha o campo corretamente!\n");
             } else if (strlen(sobrenome) <= 2) {
                 printf("Erro: Sobrenome muito curto! Tente novamente.\n");
-            } else if (strlen(sobrenome) >= 30) {
-                printf("Erro: Sobrenome muito longo! Tente novamente.\n");
             } else {
                 formatar_nome(sobrenome);
                 break;
@@ -86,18 +83,13 @@ int main() {
 
     printf("\nSeu nome completo e: %s %s\n", nome, sobrenome);
     printf("--------------------------------------------\n");
-    SLEEP_MS(2000);
+    SLEEP_MS(1000);
 
-    printf("Certo! Agora gostaria de saber a sua idade e seu CPF!\n");
-    printf("-------------------------------------------\n");
-    SLEEP_MS(2000);
-
-    
     while (1) {
         printf("Digite sua idade: ");
         if (scanf("%d", &idade) != 1) { 
             printf("Erro: Por favor, digite apenas numeros.\n");
-            while (getchar() != '\n'); // Limpa o lixo do teclado
+            while (getchar() != '\n'); 
             continue; 
         }
 
@@ -114,39 +106,74 @@ int main() {
     printf("-------------------------------------------\n");
     SLEEP_MS(2000);
 
+    // --- LOOP CPF ---
     while (1) {
         printf("Digite seu CPF (somente 11 numeros): ");
         if (scanf("%s", cpf) == 1){
-        while (getchar() != '\n');
+            while (getchar() != '\n'); 
 
             if(strlen(cpf) < 11){
                 printf("CPF inválido! Tente novamente.\n");
-            
-            } 
-            else if(strlen(cpf) > 11){
+            } else if(strlen(cpf) > 11){
                 printf("CPF muito longo! Tente novamente. \n");
-
-            } 
-            else if(strlen(cpf) == 0){
-                printf("Erro: Preencha o campo corretamente.\n");
-            } 
-            else {
+            } else {
                 printf("Seu CPF e %s. Registrado com sucesso!\n", cpf);
+                printf("-------------------------------------------\n");
                 break;
+            }
         }
     }
- }
-        
-        printf("\nEntao usuario seu cadastro ficou assim: \n");
+
+    printf("Quase la, falta pouco agora!\n");
+    printf("-------------------------------------------\n");
+    printf("Por fim, precisamos do seu email pessoal.\n");
+    printf("-------------------------------------------\n");
+    SLEEP_MS(2000);   
+
+    // --- LOOP EMAIL ---
+    while (1) {
+        printf("Digite seu email pessoal: ");
+        if (fgets(email, sizeof(email), stdin) != NULL) {
+            email[strcspn(email, "\n")] = '\0';
+
+            if (strlen(email) <= 5) {
+                printf("Erro: Email muito curto! Tente novamente.\n");
+            } else {
+                arroba_encontrado = 0;
+                for (int i = 0; email[i] != '\0'; i++) {
+                    if (email[i] == '@'){
+                        arroba_encontrado = 1;
+                        break;
+                    }
+                }
+                
+                if (!arroba_encontrado) {
+                    printf("Erro: Email invalido! Deve conter '@'. Tente novamente.\n");
+                } else {
+                    printf("Email %s registrado com sucesso!\n", email);
+                    printf("-------------------------------------------\n");
+                    break;
+                }
+            }
+        }
+    }
+    SLEEP_MS(1000);
+    printf("Cadastro concluido com sucesso!\n");
+    printf("-------------------------------------------\n");
+    SLEEP_MS(1000);
+
+    // --- RESULTADO FINAL ---
+    printf("\nEntao usuario seu cadastro ficou assim: \n");
     printf("-------------------------------------------\n");
     printf("E importante verificar se os dados estao corretos! \n");
     SLEEP_MS(2000);
-    
+
     printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
     printf("|                                           |\n");
-    printf("|      Nome Completo: \"%s\" \"%s\"         |\n", nome, sobrenome);
+    printf("|      Nome Completo: \"%s\" \"%s\"             |\n", nome, sobrenome);
     printf("|      Idade: %d anos                       |\n", idade);
     printf("|      CPF: %s                              |\n", cpf);
+    printf("|      Email: %s                            |\n", email); 
     printf("|                                           |\n");
     printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
 
