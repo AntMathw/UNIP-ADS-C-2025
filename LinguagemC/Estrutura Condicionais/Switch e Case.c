@@ -1,4 +1,4 @@
-#include <stdio.h>
+ni#include <stdio.h>
 
 int main() {
     int opcao;
@@ -123,6 +123,41 @@ int main() {
         default:
             // Caso o utilizador digite algo fora do intervalo 1-4
             printf("\nOpção inválida! Por favor, tente novamente.\n");
+            break;
+    }
+
+    return 0;
+}
+
+#include <stdio.h>
+
+int main() {
+    int opcao;
+
+    printf("--- Menu do Café ---\n");
+    printf("1 - Café Expresso\n");
+    printf("2 - Cappuccino\n");
+    printf("3 - Chocolate Quente\n");
+    printf("Escolha uma opção (1-3): ");
+    scanf("%d", &opcao);
+
+    // Início da estrutura switch
+    switch (opcao) {
+        case 1:
+            printf("Saindo um Café Expresso caprichado!\n");
+            break; // O break evita que o código execute os próximos cases
+
+        case 2:
+            printf("Preparando seu Cappuccino cremoso.\n");
+            break;
+
+        case 3:
+            printf("Um Chocolate Quente saindo agora!\n");
+            break;
+
+        default:
+            // Executado se nenhuma das opções acima for escolhida
+            printf("Opção inválida. Por favor, tente novamente.\n");
             break;
     }
 
