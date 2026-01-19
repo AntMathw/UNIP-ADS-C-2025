@@ -40,7 +40,7 @@ EXPORT int avaliar_senha(const char* senha) {
     return 1;
 }
 
-// --- SUA ESTRUTURA ORIGINAL DE FORMATAÇÃO ---
+// --- ESTRUTURA ORIGINAL DE FORMATAÇÃO ---
 
 void formatar_nome(char str[]) {
     if (str[0] != '\0') {
@@ -69,11 +69,13 @@ int main() {
 
     printf("\nOla usuario, entao vamos comecar o seu cadastro!\n");
     printf("-------------------------------------------\n");
-    SLEEP_MS(1000);
+    SLEEP_MS(2000);
 
     // --- LOOP NOME ---
     while (1) {
         printf("Digite seu nome: ");
+        SLEEP_MS(2000);
+
         if (fgets(nome, sizeof(nome), stdin) != NULL) {
             nome[strcspn(nome, "\n")] = '\0'; 
             if (strlen(nome) == 0) {
@@ -86,10 +88,12 @@ int main() {
             }
         }
     }
-
     // --- LOOP SOBRENOME ---
     while (1) {
+        SLEEP_MS(2000);
+        printf("-----------------------------------\n");
         printf("Certo, agora digite seu sobrenome: ");
+
         if (fgets(sobrenome, sizeof(sobrenome), stdin) != NULL) {
             sobrenome[strcspn(sobrenome, "\n")] = '\0';
             if (strlen(sobrenome) <= 2) {
@@ -100,10 +104,16 @@ int main() {
             }
         }
     }
+    printf("-----------------------------\n");
+    printf("Prazer em conhecer-lo %s %s\n", nome, sobrenome);
+    SLEEP_MS(2000);
 
     // --- LOOP IDADE ---
     while (1) {
+        printf("-------------------\n");
         printf("Digite sua idade: ");
+        SLEEP_MS(2000);
+        
         if (scanf("%d", &idade) != 1) { 
             printf("Erro: Digite apenas numeros.\n");
             while (getchar() != '\n'); 
@@ -118,15 +128,20 @@ int main() {
 
     // --- LOOP CPF ---
     while (1) {
+        printf("-----------------------------\n");
         printf("Digite seu CPF (11 numeros): ");
+        SLEEP_MS(2000);
         scanf("%s", cpf);
+
         if(strlen(cpf) == 11) break;
         printf("CPF invalido!\n");
     }
 
     // --- LOOP EMAIL ---
     while (1) {
+        printf("------------------\n");
         printf("Digite seu email: ");
+        SLEEP_MS(2000);
         scanf("%s", email);
         if (strchr(email, '@') != NULL) break;
         printf("Email invalido!\n");
