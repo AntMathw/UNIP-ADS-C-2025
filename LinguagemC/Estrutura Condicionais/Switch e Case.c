@@ -163,3 +163,38 @@ int main() {
 
     return 0;
 }
+
+#include <stdio.h>
+
+int main() {
+    int opcao;
+
+    printf("--- Menu da Lanchonete ---\n");
+    printf("1 - Hamburguer\n");
+    printf("2 - Batata Frita\n");
+    printf("3 - Refrigerante\n");
+    printf("Escolha uma opcao (1-3): ");
+    scanf("%d", &opcao);
+
+    // Início da estrutura switch
+    switch (opcao) {
+        case 1:
+            printf("Voce escolheu: Hamburguer.\n");
+            break; // O break serve para sair do switch após executar o caso
+
+        case 2:
+            printf("Voce escolheu: Batata Frita.\n");
+            break;
+
+        case 3:
+            printf("Voce escolheu: Refrigerante.\n");
+            break;
+
+        default:
+            // O default é executado se nenhuma das opções anteriores for válida
+            printf("Opcao invalida! Tente novamente.\n");
+            break;
+    }
+
+    return 0;
+}
