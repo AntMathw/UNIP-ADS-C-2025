@@ -1,4 +1,4 @@
-/// Cálculo do Indíce de Massal Corporal
+eu/// Cálculo do Indíce de Massal Corporal
 
 #include <stdio.h>
 #include <math.h>
@@ -599,3 +599,13 @@ int main() {
     return 0;
 }
 
+#include <stdio.h>
+
+int main() {
+    // Estrutura: for (inicialização; condição; incremento)
+    for (int i = 0; i < 5; i++) {
+        printf("Repetição número: %d\n", i);
+    }
+
+    return 0;
+}
