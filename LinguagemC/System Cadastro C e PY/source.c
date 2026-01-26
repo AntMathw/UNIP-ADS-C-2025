@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h> 
 #include <ctype.h>
+#include <conio.h>
 
 // Configuração para exportar funções para o Python sem quebrar o código original
 #ifdef _WIN32
@@ -154,5 +155,56 @@ int main() {
     printf("| Email: %s\n", email);
     printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
 
+    SLEEP_MS(2000);
+    printf("Cadastro concluido com sucesso!\n");    
+
+    printf("-------------------------------------------\n");
+    printf("Para darmos continuedade ao seu cadastro, por favor defina uma senha.\n");
+    SLEEP_MS(2000);
+
+    char senha [50];
+    int senha_forte;
+    while (1) {
+    printf("------------------\n");
+    printf("Digite sua senha: ");
+    
+    // --- INÍCIO DA LÓGICA DE ESCONDER SENHA ---
+    int i = 0;
+    char ch;
+    while (1) {
+        ch = getch(); // Captura a tecla sem mostrar na tela
+
+        if (ch == 13) { // 13 é o ENTER
+            senha[i] = '\0';
+            break;
+        } else if (ch == 8) { // 8 é o BACKSPACE
+            if (i > 0) {
+                i--;
+                printf("\b \b"); // Apaga o asterisco da tela
+            }
+        } else if (i < 49) { // Limite para não estourar o tamanho da string
+            senha[i++] = ch;
+            printf("*"); // Mostra o asterisco
+        }
+    }
+    printf("\n"); // Pula linha após o Enter
+    // --- FIM DA LÓGICA DE ESCONDER SENHA ---
+
+    // O restante do seu código permanece IDENTICO
+    senha_forte = avaliar_senha(senha);
+    if (senha_forte < 50) {
+        printf("Senha forte definida com sucesso!\n");
+        break;
+    } else if (senha_forte > 3) {
+        printf("Senha media definida. Considere usar caracteres especiais para maior seguranca.\n");
+        break;
+    } else {
+        printf("Senha fraca! Tente novamente.\n");
+    }
+}
+    
+    
+
     return 0;
 }
+
