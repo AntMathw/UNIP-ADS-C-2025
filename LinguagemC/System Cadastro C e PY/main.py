@@ -30,14 +30,29 @@ try:
             print(f"Erro ao salvar arquivo: {e}")
 
     def executar_sistema():
-        print("=== SISTEMA HIBRIDO: PYTHON + C ===")
+        print("===============================================")
+        print('|      SISTEMA DE CONFIRMAÇÃO DE USUÁRIO       |')
+        print('===============================================')
+        time.sleep(2)
+
+        print("\n=====================================================")
+        print('Para continuarmos, vamos confirmar seus dados novamente!')
+        time.sleep(2)
         
+        print("\n====================================")
         nome = input("Digite seu nome: ").title()
         
         # Loop para CPF e Email
         while True:
+            
+            print("\n=====================================")
             cpf = input("Digite o CPF (apenas 11 numeros): ")
+            time.sleep(2)
+
+            print("\n=======================")            
             email = input("Digite o Email: ")
+            time.sleep(2)
+
 
             print("\n[C] Validando dados básicos...")
             resultado = lib.validar_cadastro(cpf.encode('utf-8'), email.encode('utf-8'))
@@ -51,10 +66,12 @@ try:
                 print("❌ ERRO NO C: Email invalido.")
 
         # Loop para Senha
-        print('\n--- SEGURANÇA DA SENHA ---')
+        print('\n===== SEGURANÇA DA SENHA =====')
         while True:
             senha = pwinput.pwinput(prompt="Crie uma senha: ", mask="*")
-            
+            time.sleep(2)
+
+
             # Chamando a função da DLL
             nota = lib.avaliar_senha(senha.encode('utf-8'))
 
@@ -69,6 +86,7 @@ try:
         # FINALIZAÇÃO: Salva os dados após todas as validações passarem
         salvar_no_arquivo(nome, cpf, email)
         print("\n=== PROCESSO FINALIZADO ===")
+        time.sleep(3)
 
 except Exception as e:
     print(f"ERRO DE CONFIGURAÇÃO: {e}")
