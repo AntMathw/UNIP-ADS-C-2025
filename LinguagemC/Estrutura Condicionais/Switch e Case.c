@@ -198,3 +198,32 @@ int main() {
 
     return 0;
 }
+
+#include <stdio.h>
+
+int main() {
+    int opcao;
+
+    printf("--- Menu de Bebidas ---\n");
+    printf("1 - Café\n");
+    printf("2 - Suco\n");
+    printf("3 - Refrigerante\n");
+    printf("Escolha uma opcao: ");
+    scanf("%d", &opcao);
+
+    switch (opcao) {
+        case 1:
+            printf("Voce escolheu Cafe. Saindo quentinho!\n");
+            break;
+        case 2:
+            printf("Voce escolheu Suco. Vitamina pura!\n");
+            break;
+        case 3:
+            printf("Voce escolheu Refrigerante. Bem gelado!\n");
+            break;
+        default:
+            printf("Opcao invalida! Escolha entre 1 e 3.\n");
+    }
+
+    return 0;
+}
